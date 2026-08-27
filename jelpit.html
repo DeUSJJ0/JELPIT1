@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TuGuía PH Colombia | Ley 675 y Propiedad Horizontal</title>
+  <meta name="description" content="Plataforma educativa e informativa sobre propiedad horizontal en Colombia, Ley 675 de 2001, recaudo digital, gestión de mora, derechos, deberes y administración.">
+  <meta name="theme-color" content="#171A2F">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root{
+      --ink:#171A2F;
+      --ink-2:#242842;
+      --plum:#7A4FF3;
+      --plum-2:#A88BFF;
+      --teal:#16A88D;
+      --mint:#88E8C8;
+      --mint-soft:#DDF9EF;
+      --sand:#F6F2EA;
+      --sand-2:#EFE8DC;
+      --white:#FFFFFF;
+      --text:#262A3A;
+      --muted:#6E7385;
+      --line:#E3DED4;
+      --gold:#E6B44A;
+      --shadow:0 20px 60px rgba(23,26,47,.12);
+      --radius:26px;
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:var(--sand);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+    .container{max-width:var(--max);margin:auto;padding:0 24px}
+
+    /* TOP NOTICE */
+    .clarity{
+      background:var(--mint);
+      color:#10231E;
+      padding:10px 20px;
+      font-size:.84rem;
+      font-weight:700;
+      text-align:center;
+      border-bottom:1px solid rgba(16,35,30,.08);
+    }
+    .clarity i{margin-right:8px}
+    .clarity strong{text-decoration:underline}
+
+    /* NEW HEADER */
+    header{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(23,26,47,.97);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:auto;
+      padding:15px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#fff;
+      min-width:250px;
+    }
+    .brand-mark{
+      width:48px;height:48px;
+      border-radius:16px;
+      display:grid;place-items:center;
+      color:var(--ink);
+      background:linear-gradient(145deg,var(--mint),#D4FFF1);
+      font-size:1.25rem;
+      box-shadow:0 10px 24px rgba(136,232,200,.18);
+    }
+    .brand-name{
+      font:700 1.1rem 'Space Grotesk';
+      line-height:1;
+    }
+    .brand-tag{
+      color:#B9BDD0;
+      font-size:.62rem;
+      font-weight:700;
+      letter-spacing:1.3px;
+      margin-top:5px;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:3px;
+    }
+    .nav-links a{
+      display:block;
+      color:#D6D8E3;
+      font-size:.74rem;
+      font-weight:700;
+      padding:9px 10px;
+      border-radius:12px;
+      text-transform:uppercase;
+      letter-spacing:.35px;
+      transition:.2s ease;
+    }
+    .nav-links a:hover{
+      background:rgba(255,255,255,.07);
+      color:#fff;
+    }
+    .nav-cta{
+      color:#18221F!important;
+      background:linear-gradient(90deg,var(--mint),#D6FFF1)!important;
+      padding:11px 16px!important;
+      box-shadow:0 8px 20px rgba(136,232,200,.12);
+    }
+    .menu-btn{
+      display:none;
+      border:none;
+      background:none;
+      color:#fff;
+      font-size:1.4rem;
+    }
+
+    /* HERO - COMPLETELY NEW */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(122,79,243,.18), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(22,168,141,.18), transparent 28%),
+        linear-gradient(135deg,#F7F2EA 0%,#F4EEE5 55%,#ECE5DA 100%);
+      padding:86px 0 74px;
+      border-bottom:1px solid var(--line);
+    }
+    .hero::before{
+      content:'';
+      position:absolute;
+      right:-140px;
+      top:40px;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      border:1px solid rgba(122,79,243,.13);
+      box-shadow:
+        0 0 0 60px rgba(122,79,243,.03),
+        0 0 0 120px rgba(22,168,141,.025);
+    }
+    .hero::after{
+      content:'';
+      position:absolute;
+      left:-100px;
+      bottom:-130px;
+      width:340px;
+      height:340px;
+      border-radius:50%;
+      background:radial-gradient(circle,var(--mint-soft),transparent 70%);
+    }
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:58px;
+      align-items:center;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#4F437E;
+      background:rgba(122,79,243,.08);
+      border:1px solid rgba(122,79,243,.13);
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:.76rem;
+      font-weight:800;
+      margin-bottom:22px;
+    }
+    h1{
+      font-size:clamp(3rem,5.6vw,5.6rem);
+      line-height:.97;
+      letter-spacing:-3px;
+      color:var(--ink);
+      max-width:780px;
+    }
+    .accent-plum{color:var(--plum)}
+    .accent-teal{color:var(--teal)}
+    .hero-copy{
+      margin-top:24px;
+      max-width:720px;
+      color:#5F6270;
+      font-size:1.08rem;
+      line-height:1.78;
+    }
+    .hero-actions{
+      margin-top:30px;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      padding:14px 22px;
+      border-radius:14px;
+      font-weight:800;
+      transition:.22s ease;
+      border:1px solid transparent;
+    }
+    .btn-dark{
+      color:#fff;
+      background:var(--ink);
+      box-shadow:0 14px 30px rgba(23,26,47,.17);
+    }
+    .btn-dark:hover{transform:translateY(-3px)}
+    .btn-light{
+      color:var(--ink);
+      border-color:#D5CEC2;
+      background:rgba(255,255,255,.62);
+    }
+    .btn-light:hover{background:#fff}
+
+    /* HERO DASHBOARD */
+    .dashboard{
+      background:var(--ink);
+      color:#fff;
+      border-radius:32px;
+      padding:24px;
+      box-shadow:0 30px 80px rgba(23,26,47,.20);
+      position:relative;
+      overflow:hidden;
+    }
+    .dashboard::before{
+      content:'';
+      position:absolute;
+      width:260px;height:260px;
+      border-radius:50%;
+      right:-90px;top:-110px;
+      background:radial-gradient(circle,rgba(122,79,243,.55),transparent 68%);
+    }
+    .dashboard::after{
+      content:'';
+      position:absolute;
+      width:220px;height:220px;
+      border-radius:50%;
+      left:-90px;bottom:-100px;
+      background:radial-gradient(circle,rgba(22,168,141,.35),transparent 70%);
+    }
+    .dash-top{
+      position:relative;z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding-bottom:18px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .dash-title{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .dash-icon{
+      width:44px;height:44px;border-radius:14px;
+      display:grid;place-items:center;
+      color:var(--ink);
+      background:var(--mint);
+    }
+    .dash-title h3{font-size:1rem}
+    .dash-title p{color:#9EA4BA;font-size:.75rem;margin-top:3px}
+    .dash-chip{
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:.68rem;
+      font-weight:800;
+      color:var(--mint);
+      background:rgba(136,232,200,.08);
+      border:1px solid rgba(136,232,200,.16);
+    }
+    .dash-grid{
+      position:relative;z-index:2;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:18px;
+    }
+    .dash-card{
+      border-radius:18px;
+      padding:17px;
+      background:rgba(255,255,255,.055);
+      border:1px solid rgba(255,255,255,.06);
+      min-height:118px;
+    }
+    .dash-card i{
+      width:36px;height:36px;border-radius:11px;
+      display:grid;place-items:center;
+      background:rgba(255,255,255,.08);
+      color:var(--mint);
+      margin-bottom:12px;
+    }
+    .dash-card strong{
+      display:block;
+      font-size:.9rem;
+      margin-bottom:5px;
+    }
+    .dash-card span{
+      color:#AEB4C8;
+      font-size:.73rem;
+      line-height:1.5;
+    }
+    .dash-footer{
+      position:relative;z-index:2;
+      margin-top:14px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:linear-gradient(90deg,rgba(122,79,243,.16),rgba(22,168,141,.12));
+      border:1px solid rgba(255,255,255,.06);
+      color:#D9DCEC;
+      font-size:.78rem;
+      line-height:1.55;
+    }
+
+    /* DISCLAIMER STRIP */
+    .disclaimer{
+      background:#FFF8E7;
+      border-bottom:1px solid #E8D8AC;
+    }
+    .disclaimer-inner{
+      max-width:var(--max);
+      margin:auto;
+      padding:16px 24px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:#6A5A2A;
+    }
+    .disclaimer i{color:#C7971C;margin-top:2px}
+    .disclaimer strong{display:block;margin-bottom:3px}
+
+    /* SECTION COMMON */
+    .section{padding:84px 0}
+    .section.alt{background:#fff}
+    .section-head{
+      max-width:760px;
+      margin:0 auto 42px;
+      text-align:center;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:7px 12px;
+      border-radius:999px;
+      color:#5A3ED5;
+      background:rgba(122,79,243,.08);
+      border:1px solid rgba(122,79,243,.12);
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      margin-bottom:13px;
+    }
+    .section-head h2{
+      color:var(--ink);
+      font-size:clamp(2.1rem,4vw,3.5rem);
+      line-height:1.08;
+    }
+    .section-head p{
+      margin-top:13px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    /* KNOWLEDGE CARDS */
+    .knowledge{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    .k-card{
+      padding:28px;
+      border-radius:26px;
+      background:#fff;
+      border:1px solid var(--line);
+      box-shadow:0 10px 30px rgba(23,26,47,.05);
+      transition:.22s ease;
+    }
+    .k-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow);
+    }
+    .k-icon{
+      width:56px;height:56px;
+      border-radius:18px;
+      display:grid;place-items:center;
+      margin-bottom:20px;
+      font-size:1.3rem;
+    }
+    .k-card:nth-child(1) .k-icon{background:#E9EEFF;color:#4D63D8}
+    .k-card:nth-child(2) .k-icon{background:#F1EAFE;color:#7A4FF3}
+    .k-card:nth-child(3) .k-icon{background:#E3F8F0;color:#15896F}
+    .k-card h3{color:var(--ink);font-size:1.08rem;margin-bottom:9px}
+    .k-card p{color:var(--muted);font-size:.9rem;line-height:1.68}
+
+    /* FEATURE LAYOUT */
+    .feature-wrap{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:28px;
+      align-items:stretch;
+    }
+    .feature-main{
+      border-radius:30px;
+      padding:32px;
+      background:linear-gradient(145deg,var(--plum),#5936C7);
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+      min-height:440px;
+    }
+    .feature-main::after{
+      content:'';
+      position:absolute;
+      width:320px;height:320px;
+      border-radius:50%;
+      right:-120px;bottom:-130px;
+      background:radial-gradient(circle,rgba(136,232,200,.4),transparent 70%);
+    }
+    .feature-main .eyebrow{
+      color:#DFF8F0;
+      background:rgba(255,255,255,.1);
+      border-color:rgba(255,255,255,.12);
+    }
+    .feature-main h2{
+      font-size:clamp(2rem,4vw,3.5rem);
+      line-height:1.08;
+      max-width:540px;
+      position:relative;z-index:2;
+    }
+    .feature-main p{
+      color:#E8E2FF;
+      line-height:1.75;
+      max-width:560px;
+      margin-top:16px;
+      position:relative;z-index:2;
+    }
+    .feature-badges{
+      display:flex;flex-wrap:wrap;gap:10px;
+      margin-top:28px;
+      position:relative;z-index:2;
+    }
+    .feature-badges span{
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.76rem;
+      font-weight:700;
+    }
+
+    .feature-list{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .mini{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+      min-height:210px;
+      box-shadow:0 10px 28px rgba(23,26,47,.04);
+    }
+    .mini i{
+      width:44px;height:44px;
+      border-radius:14px;
+      display:grid;place-items:center;
+      background:var(--mint-soft);
+      color:var(--teal);
+      margin-bottom:16px;
+    }
+    .mini h3{font-size:1rem;color:var(--ink);margin-bottom:8px}
+    .mini p{font-size:.86rem;line-height:1.65;color:var(--muted)}
+
+    /* ZONE */
+    .zone{
+      background:var(--ink);
+      color:#fff;
+      border-radius:32px;
+      padding:38px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:center;
+      overflow:hidden;
+      position:relative;
+    }
+    .zone::after{
+      content:'';
+      position:absolute;
+      width:300px;height:300px;
+      border-radius:50%;
+      right:-100px;top:-120px;
+      background:radial-gradient(circle,rgba(136,232,200,.23),transparent 70%);
+    }
+    .zone h2{
+      font-size:clamp(2rem,4vw,3.2rem);
+      line-height:1.08;
+      position:relative;z-index:2;
+    }
+    .zone p{
+      margin-top:12px;
+      color:#B9BDD0;
+      line-height:1.7;
+      max-width:720px;
+      position:relative;z-index:2;
+    }
+    .zone .btn{
+      position:relative;z-index:2;
+      background:var(--mint);
+      color:#15231F;
+      white-space:nowrap;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#101322;
+      color:#B5B9C9;
+      padding-top:46px;
+    }
+    .footer-grid{
+      max-width:var(--max);
+      margin:auto;
+      padding:0 24px 30px;
+      display:grid;
+      grid-template-columns:1.7fr 1fr 1fr 1.2fr;
+      gap:28px;
+    }
+    footer h4{color:#fff;margin-bottom:12px;font-size:.95rem}
+    footer a,footer p{font-size:.83rem;line-height:1.8;color:#9EA3B5}
+    .footer-note{
+      margin-top:13px;
+      padding:12px 14px;
+      border-radius:12px;
+      background:rgba(136,232,200,.06);
+      border:1px solid rgba(136,232,200,.11);
+      color:#BCDCCF;
+      font-size:.76rem;
+    }
+    .copy{
+      border-top:1px solid rgba(255,255,255,.07);
+      text-align:center;
+      padding:17px 24px;
+      font-size:.75rem;
+      color:#747A90;
+    }
+
+    @media(max-width:1050px){
+      .hero-grid,.feature-wrap{grid-template-columns:1fr}
+      .knowledge{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:920px){
+      .menu-btn{display:block}
+      nav{
+        display:none;
+        position:fixed;
+        top:112px;
+        left:14px;right:14px;
+        background:var(--ink);
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:18px;
+        padding:14px;
+        box-shadow:0 22px 50px rgba(0,0,0,.2);
+      }
+      nav.open{display:block}
+      .nav-links{flex-direction:column;align-items:stretch}
+    }
+    @media(max-width:700px){
+      .brand{min-width:auto}
+      .brand-tag{display:none}
+      .hero{padding-top:60px}
+      h1{letter-spacing:-1.5px}
+      .hero-actions{flex-direction:column}
+      .btn{width:100%}
+      .knowledge,.feature-list,.footer-grid{grid-template-columns:1fr}
+      .zone{grid-template-columns:1fr}
+      .zone .btn{width:100%}
+      .dash-grid{grid-template-columns:1fr}
+      .clarity{font-size:.74rem}
+      nav{top:118px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="clarity">
+    <i class="fa-solid fa-shield-halved"></i>
+    <strong>Aviso de claridad:</strong>
+    plataforma 100% educativa e informativa. No procesamos pagos, no recaudamos dinero ni administramos copropiedades.
+  </div>
+
+  <header>
+    <div class="nav">
+      <a href="#inicio" class="brand">
+        <div class="brand-mark"><i class="fa-solid fa-book-open"></i></div>
+        <div>
+          <div class="brand-name">TuGuía PH Colombia</div>
+          <div class="brand-tag">EDUCACIÓN EN PROPIEDAD HORIZONTAL</div>
+        </div>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav id="mainNav">
+        <ul class="nav-links">
+          <li><a href="#ley">Ley 675</a></li>
+          <li><a href="#recaudo">Recaudo digital</a></li>
+          <li><a href="#mora">Mora</a></li>
+          <li><a href="#derechos">Derechos</a></li>
+          <li><a href="#admin">Administrador</a></li>
+          <li><a href="#simuladores">Simuladores</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a class="nav-cta" href="#zona">Zona interactiva</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">
+            <i class="fa-solid fa-scale-balanced"></i>
+            Formación y modernización de la propiedad horizontal
+          </div>
+
+          <h1>
+            Comprende la <span class="accent-plum">Ley 675</span>
+            y la <span class="accent-teal">gestión digital</span> de una copropiedad.
+          </h1>
+
+          <p class="hero-copy">
+            Aprende cómo funcionan los edificios y conjuntos residenciales en Colombia:
+            expensas comunes, recaudo digital, gestión de cartera, derechos, deberes,
+            administración y herramientas tecnológicas aplicadas a la propiedad horizontal.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#recaudo" class="btn btn-dark">
+              <i class="fa-solid fa-laptop-file"></i> Explorar recaudo digital
+            </a>
+            <a href="#ley" class="btn btn-light">
+              <i class="fa-solid fa-book"></i> Estudiar Ley 675
+            </a>
+          </div>
+        </div>
+
+        <aside class="dashboard">
+          <div class="dash-top">
+            <div class="dash-title">
+              <div class="dash-icon"><i class="fa-solid fa-city"></i></div>
+              <div>
+                <h3>Copropiedad Moderna</h3>
+                <p>Mapa educativo de conceptos clave</p>
+              </div>
+            </div>
+            <span class="dash-chip">ACTUAL</span>
+          </div>
+
+          <div class="dash-grid">
+            <div class="dash-card">
+              <i class="fa-solid fa-building"></i>
+              <strong>Propiedad horizontal</strong>
+              <span>Organización, órganos y funcionamiento de la copropiedad.</span>
+            </div>
+            <div class="dash-card">
+              <i class="fa-solid fa-wallet"></i>
+              <strong>Recaudo digital</strong>
+              <span>Canales, plataformas y conciliación de pagos.</span>
+            </div>
+            <div class="dash-card">
+              <i class="fa-solid fa-chart-line"></i>
+              <strong>Gestión de cartera</strong>
+              <span>Conceptos para entender mora, seguimiento y acuerdos.</span>
+            </div>
+            <div class="dash-card">
+              <i class="fa-solid fa-user-shield"></i>
+              <strong>Administración</strong>
+              <span>Funciones y responsabilidades dentro de una PH.</span>
+            </div>
+          </div>
+
+          <div class="dash-footer">
+            Contenido diseñado para estudiar y comprender procesos residenciales. No corresponde a un portal oficial de recaudo.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <div class="disclaimer-inner">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <div>
+          <strong>Importante</strong>
+          Este sitio no recibe, procesa ni recauda pagos. Tampoco representa oficialmente a copropiedades, administraciones ni plataformas de recaudo.
+        </div>
+      </div>
+    </div>
+
+    <section class="section alt" id="ley">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><i class="fa-solid fa-book"></i> Marco educativo</span>
+          <h2>Los fundamentos que todo residente debería conocer</h2>
+          <p>Una estructura visual para aprender los conceptos más importantes de la propiedad horizontal en Colombia.</p>
+        </div>
+
+        <div class="knowledge">
+          <article class="k-card">
+            <div class="k-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h3>Ley 675 de 2001</h3>
+            <p>Conceptos esenciales sobre propiedad horizontal, órganos de administración, convivencia y funcionamiento de las copropiedades.</p>
+          </article>
+
+          <article class="k-card" id="derechos">
+            <div class="k-icon"><i class="fa-solid fa-people-group"></i></div>
+            <h3>Deberes y derechos</h3>
+            <p>Información educativa sobre participación, obligaciones, uso de bienes comunes y responsabilidades de propietarios y residentes.</p>
+          </article>
+
+          <article class="k-card" id="admin">
+            <div class="k-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <h3>Rol del administrador</h3>
+            <p>Funciones administrativas, operativas y documentales que intervienen en la gestión cotidiana de una copropiedad.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recaudo">
+      <div class="container feature-wrap">
+        <div class="feature-main">
+          <span class="eyebrow"><i class="fa-solid fa-microchip"></i> Digitalización</span>
+          <h2>Entiende el ecosistema de recaudo y gestión financiera</h2>
+          <p>
+            Aprende cómo funcionan las herramientas de consulta, recaudo, conciliación y seguimiento utilizadas dentro del ecosistema de propiedad horizontal, siempre desde un enfoque educativo.
+          </p>
+
+          <div class="feature-badges">
+            <span>Canales digitales</span>
+            <span>Conciliación</span>
+            <span>Cartera</span>
+            <span>Seguimiento</span>
+          </div>
+        </div>
+
+        <div class="feature-list">
+          <article class="mini" id="mora">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Gestión de mora</h3>
+            <p>Conceptos didácticos sobre cartera vencida, seguimiento, acuerdos y buenas prácticas administrativas.</p>
+          </article>
+
+          <article class="mini" id="simuladores">
+            <i class="fa-solid fa-calculator"></i>
+            <h3>Simuladores</h3>
+            <p>Escenarios prácticos para comprender cuotas, periodos, presupuestos y otros conceptos residenciales.</p>
+          </article>
+
+          <article class="mini">
+            <i class="fa-solid fa-wallet"></i>
+            <h3>Plataformas de recaudo</h3>
+            <p>Contenido sobre soluciones tecnológicas de consulta, pagos y conciliación utilizadas por el sector.</p>
+          </article>
+
+          <article class="mini" id="faq">
+            <i class="fa-solid fa-circle-question"></i>
+            <h3>Preguntas frecuentes</h3>
+            <p>Respuestas claras sobre administración, pagos, asambleas, cartera y responsabilidades de residentes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="zona">
+      <div class="container">
+        <div class="zone">
+          <div>
+            <h2>Zona interactiva de aprendizaje</h2>
+            <p>Explora guías, contenidos y ejercicios para comprender mejor la propiedad horizontal y su transformación digital.</p>
+          </div>
+          <a href="#inicio" class="btn">
+            <i class="fa-solid fa-arrow-up"></i> Volver al inicio
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="brand">
+          <div class="brand-mark"><i class="fa-solid fa-book-open"></i></div>
+          <div>
+            <div class="brand-name">TuGuía PH Colombia</div>
+            <div class="brand-tag">PLATAFORMA EDUCATIVA</div>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          Sitio informativo y educativo. No procesa pagos, no recauda dinero y no administra copropiedades.
+        </div>
+      </div>
+
+      <div>
+        <h4>Aprende</h4>
+        <a href="#ley">Ley 675</a>
+        <a href="#derechos">Deberes y derechos</a>
+        <a href="#admin">Administrador</a>
+      </div>
+
+      <div>
+        <h4>Herramientas</h4>
+        <a href="#recaudo">Recaudo digital</a>
+        <a href="#mora">Gestión de mora</a>
+        <a href="#simuladores">Simuladores</a>
+      </div>
+
+      <div>
+        <h4>Información</h4>
+        <p>Contenido didáctico sobre propiedad horizontal en Colombia.</p>
+      </div>
+    </div>
+
+    <div class="copy">
+      © 2026 TuGuía PH Colombia. Plataforma educativa e informativa.
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mainNav = document.getElementById('mainNav');
+
+    menuBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('open');
+    });
+
+    mainNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mainNav.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
