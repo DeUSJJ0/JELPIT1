@@ -1166,6 +1166,31 @@
       border: 1px solid rgba(184, 107, 255, 0.1);
     }
     .notificacion.visible { transform: translateX(0); }
+  
+    /* ===== CONSENTIMIENTO DE COOKIES ===== */
+    #cookieBanner {
+      position: fixed; left: 18px; right: 18px; bottom: 18px; z-index: 20000;
+      max-width: 900px; margin: 0 auto; padding: 22px;
+      background: #17101b; color: #fff; border: 1px solid rgba(184,107,255,.45);
+      border-radius: 18px; box-shadow: 0 12px 50px rgba(0,0,0,.65);
+      display: none; font-family: 'Inter', sans-serif;
+    }
+    #cookieBanner.visible { display: block; }
+    #cookieBanner h3 { color: #d4a0ff; font-size: 1rem; margin-bottom: 8px; }
+    #cookieBanner p { color: #ddd; font-size: .88rem; line-height: 1.55; margin-bottom: 12px; }
+    #cookieBanner a { color: #d4a0ff; text-decoration: underline; }
+    .cookie-acciones { display:flex; flex-wrap:wrap; gap:9px; margin-top:14px; }
+    .cookie-acciones button {
+      border: 1px solid #8d52a0; border-radius: 22px; padding: 10px 15px;
+      background: transparent; color:#fff; cursor:pointer; font-weight:700; font-size:.82rem;
+    }
+    .cookie-acciones button.principal { background:#7b2f8a; border-color:#7b2f8a; }
+    .cookie-opciones { display:none; padding-top:10px; border-top:1px solid #49334e; margin-top:12px; }
+    .cookie-opciones.visible { display:block; }
+    .cookie-opciones label { display:flex; gap:9px; align-items:flex-start; color:#eee; font-size:.84rem; margin:10px 0; }
+    .cookie-opciones input { margin-top:4px; accent-color:#b86bff; }
+    @media(max-width:600px) { #cookieBanner { left:10px; right:10px; bottom:10px; padding:17px; } .cookie-acciones button { flex:1 1 100%; } }
+
   </style>
 </head>
 <body>
@@ -1550,10 +1575,28 @@
       </div>
     </div>
     <div class="footer-copy">
-      <p>&copy; <span id="anioCopyright"></span> Batería Bolt. Todos los derechos reservados. | <a href="#" style="color:rgba(255,255,255,0.25);">Aviso de privacidad</a> | <a href="#" style="color:rgba(255,255,255,0.25);">Términos</a></p>
+      <p>&copy; <span id="anioCopyright"></span> Batería Bolt. Todos los derechos reservados. | <a href="politica-de-datos.html" style="color:rgba(255,255,255,0.55);">Política de tratamiento de datos</a> | <a href="terminos-y-condiciones.html" style="color:rgba(255,255,255,0.55);">Términos y condiciones</a> | <button type="button" id="abrirPreferenciasCookies" style="background:none;border:0;color:rgba(255,255,255,0.55);text-decoration:underline;cursor:pointer;font:inherit;">Preferencias de cookies</button></p>
       <p style="font-size:0.7rem;margin-top:2px;">Servicio 24/7 en Bogotá. Consulta disponibilidad con un asesor por WhatsApp.</p>
     </div>
   </footer>
+
+
+  <!-- ===== AVISO DE COOKIES ===== -->
+  <section id="cookieBanner" role="dialog" aria-modal="true" aria-labelledby="cookieTitulo" aria-describedby="cookieTexto">
+    <h3 id="cookieTitulo">Tu privacidad importa</h3>
+    <p id="cookieTexto">Usamos cookies necesarias para el funcionamiento del sitio. Con tu permiso, también podríamos usar cookies opcionales para recordar preferencias o medir el uso del sitio. Puedes aceptar, rechazar las opcionales o configurar tu elección. Consulta nuestra <a href="politica-de-datos.html">Política de tratamiento de datos</a>.</p>
+    <div class="cookie-acciones">
+      <button type="button" id="cookiesRechazar">Rechazar opcionales</button>
+      <button type="button" id="cookiesConfigurar">Configurar</button>
+      <button type="button" id="cookiesAceptar" class="principal">Aceptar todas</button>
+    </div>
+    <div id="cookieOpciones" class="cookie-opciones">
+      <label><input type="checkbox" checked disabled> <span><strong>Necesarias</strong> — permiten funciones básicas y no se pueden desactivar desde este panel.</span></label>
+      <label><input type="checkbox" id="cookiesPreferencias"> <span><strong>Preferencias</strong> — recuerdan elecciones de navegación.</span></label>
+      <label><input type="checkbox" id="cookiesAnalitica"> <span><strong>Analítica</strong> — ayudan a comprender cómo se utiliza el sitio, si se incorporan herramientas de medición.</span></label>
+      <div class="cookie-acciones"><button type="button" id="cookiesGuardar" class="principal">Guardar selección</button></div>
+    </div>
+  </section>
 
   <!-- ===== BOTONES FLOTANTES ===== -->
   <a href="https://wa.me/573171534659?text=Hola,%20necesito%20una%20batería%20para%20mi%20carro%20en%20Bogotá." target="_blank" rel="noopener" class="btn-flotante-wsp" aria-label="WhatsApp">
@@ -1687,6 +1730,51 @@
         if (!wasActive) item.classList.add('activo');
       });
     });
+
+
+    // ===== CONSENTIMIENTO DE COOKIES =====
+    (function() {
+      const banner = document.getElementById('cookieBanner');
+      const opciones = document.getElementById('cookieOpciones');
+      const key = 'bateriaBoltCookieConsentV1';
+      const readConsent = () => {
+        try { return JSON.parse(localStorage.getItem(key) || 'null'); }
+        catch (_) { return null; }
+      };
+      const saveConsent = (preferences, analytics) => {
+        const consent = {
+          necessary: true,
+          preferences: !!preferences,
+          analytics: !!analytics,
+          savedAt: new Date().toISOString()
+        };
+        localStorage.setItem(key, JSON.stringify(consent));
+        banner.classList.remove('visible');
+        opciones.classList.remove('visible');
+        // Las categorías opcionales quedan registradas; no se cargan scripts analíticos
+        // mientras el sitio no tenga herramientas de terceros configuradas.
+      };
+      if (!readConsent()) banner.classList.add('visible');
+
+      document.getElementById('cookiesAceptar').addEventListener('click', () => saveConsent(true, true));
+      document.getElementById('cookiesRechazar').addEventListener('click', () => saveConsent(false, false));
+      document.getElementById('cookiesConfigurar').addEventListener('click', () => {
+        opciones.classList.toggle('visible');
+      });
+      document.getElementById('cookiesGuardar').addEventListener('click', () => {
+        saveConsent(
+          document.getElementById('cookiesPreferencias').checked,
+          document.getElementById('cookiesAnalitica').checked
+        );
+      });
+      document.getElementById('abrirPreferenciasCookies')?.addEventListener('click', () => {
+        const consent = readConsent();
+        document.getElementById('cookiesPreferencias').checked = !!consent?.preferences;
+        document.getElementById('cookiesAnalitica').checked = !!consent?.analytics;
+        banner.classList.add('visible');
+        opciones.classList.add('visible');
+      });
+    })();
 
     // ===== COPYRIGHT =====
     document.getElementById('anioCopyright').textContent = new Date().getFullYear();
